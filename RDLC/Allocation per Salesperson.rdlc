@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+  </DataSources>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <Height>2in</Height>
+        <Style />
+      </Body>
+      <Width>6.5in</Width>
+      <Page>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="ReportName">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>ReportName</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>ReportName</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="lblAllocation">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>lblAllocation</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>lblAllocation</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="lblInOrder">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>lblInOrder</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>lblInOrder</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="lblSales">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>lblSales</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>lblSales</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="lblRestToSell">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>lblRestToSell</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>lblRestToSell</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="lblInventory">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>lblInventory</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>lblInventory</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="lblUsed">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>lblUsed</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>lblUsed</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="lblSalesLY">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>lblSalesLY</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>lblSalesLY</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="lblRestAllocation">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>lblRestAllocation</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>lblRestAllocation</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="lblPS">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>lblPS</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>lblPS</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="lblBC">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>lblBC</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>lblBC</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Prognoses_ItemCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Prognoses_ItemCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Prognoses_ItemCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="No_ItemCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>No_ItemCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>No_ItemCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Description_ItemCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Description_ItemCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Description_ItemCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Description2_ItemCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Description2_ItemCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Description2_ItemCaption</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <Code>Public Function BlankZero(ByVal Value As Decimal)
+    if Value = 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankPos(ByVal Value As Decimal)
+    if Value &gt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankZeroAndPos(ByVal Value As Decimal)
+    if Value &gt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNeg(ByVal Value As Decimal)
+    if Value &lt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNegAndZero(ByVal Value As Decimal)
+    if Value &lt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+</Code>
+  <Language>=User!Language</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="COMPANYNAME">
+          <DataField>COMPANYNAME</DataField>
+        </Field>
+        <Field Name="gItemFilter">
+          <DataField>gItemFilter</DataField>
+        </Field>
+        <Field Name="grReqformfilter">
+          <DataField>grReqformfilter</DataField>
+        </Field>
+        <Field Name="TodayDate">
+          <DataField>TodayDate</DataField>
+        </Field>
+        <Field Name="USERID">
+          <DataField>USERID</DataField>
+        </Field>
+        <Field Name="Prognoses_Item">
+          <DataField>Prognoses_Item</DataField>
+        </Field>
+        <Field Name="Prognoses_ItemFormat">
+          <DataField>Prognoses_ItemFormat</DataField>
+        </Field>
+        <Field Name="Countryallocated_Item">
+          <DataField>Countryallocated_Item</DataField>
+        </Field>
+        <Field Name="Countryallocated_ItemFormat">
+          <DataField>Countryallocated_ItemFormat</DataField>
+        </Field>
+        <Field Name="No_Item">
+          <DataField>No_Item</DataField>
+        </Field>
+        <Field Name="Description_Item">
+          <DataField>Description_Item</DataField>
+        </Field>
+        <Field Name="Description2_Item">
+          <DataField>Description2_Item</DataField>
+        </Field>
+        <Field Name="gItemInvQty">
+          <DataField>gItemInvQty</DataField>
+        </Field>
+        <Field Name="gItemInvQtyFormat">
+          <DataField>gItemInvQtyFormat</DataField>
+        </Field>
+        <Field Name="gRemainingAllocation">
+          <DataField>gRemainingAllocation</DataField>
+        </Field>
+        <Field Name="gRemainingAllocationFormat">
+          <DataField>gRemainingAllocationFormat</DataField>
+        </Field>
+        <Field Name="TxtPromoStatus">
+          <DataField>TxtPromoStatus</DataField>
+        </Field>
+        <Field Name="TxtBlockingCode">
+          <DataField>TxtBlockingCode</DataField>
+        </Field>
+        <Field Name="gShowTotal">
+          <DataField>gShowTotal</DataField>
+        </Field>
+        <Field Name="Name_SalespersonPurchaser">
+          <DataField>Name_SalespersonPurchaser</DataField>
+        </Field>
+        <Field Name="Code_SalespersonPurchaser">
+          <DataField>Code_SalespersonPurchaser</DataField>
+        </Field>
+        <Field Name="vert_klantrogn">
+          <DataField>vert_klantrogn</DataField>
+        </Field>
+        <Field Name="vert_klantrognFormat">
+          <DataField>vert_klantrognFormat</DataField>
+        </Field>
+        <Field Name="gSalespAllocated">
+          <DataField>gSalespAllocated</DataField>
+        </Field>
+        <Field Name="gSalespAllocatedFormat">
+          <DataField>gSalespAllocatedFormat</DataField>
+        </Field>
+        <Field Name="gInOrder">
+          <DataField>gInOrder</DataField>
+        </Field>
+        <Field Name="gInOrderFormat">
+          <DataField>gInOrderFormat</DataField>
+        </Field>
+        <Field Name="gInvoiced">
+          <DataField>gInvoiced</DataField>
+        </Field>
+        <Field Name="gInvoicedFormat">
+          <DataField>gInvoicedFormat</DataField>
+        </Field>
+        <Field Name="gRemainder">
+          <DataField>gRemainder</DataField>
+        </Field>
+        <Field Name="gRemainderFormat">
+          <DataField>gRemainderFormat</DataField>
+        </Field>
+        <Field Name="gPercentageUsed">
+          <DataField>gPercentageUsed</DataField>
+        </Field>
+        <Field Name="gPercentageUsedFormat">
+          <DataField>gPercentageUsedFormat</DataField>
+        </Field>
+        <Field Name="gInvoicedLY">
+          <DataField>gInvoicedLY</DataField>
+        </Field>
+        <Field Name="gInvoicedLYFormat">
+          <DataField>gInvoicedLYFormat</DataField>
+        </Field>
+        <Field Name="dTotal">
+          <DataField>dTotal</DataField>
+        </Field>
+        <Field Name="dTotalFormat">
+          <DataField>dTotalFormat</DataField>
+        </Field>
+        <Field Name="TableNo_CommentLine">
+          <DataField>TableNo_CommentLine</DataField>
+        </Field>
+        <Field Name="No_CommentLine">
+          <DataField>No_CommentLine</DataField>
+        </Field>
+        <Field Name="LineNo_CommentLine">
+          <DataField>LineNo_CommentLine</DataField>
+        </Field>
+        <Field Name="Comment_CommentLine">
+          <DataField>Comment_CommentLine</DataField>
+        </Field>
+        <Field Name="CreationDate_CommentLine">
+          <DataField>CreationDate_CommentLine</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
+</Report>
