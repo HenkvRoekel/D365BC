@@ -1,6 +1,5 @@
 pageextension 90119 UserSetupBTPageExt extends "User Setup"
 {
-    //Comment
     layout
     {
         addafter(Email)
