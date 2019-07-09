@@ -1,6 +1,7 @@
 pageextension 90016 ChartofAccountsBTPageExt extends "Chart of Accounts"
 {
 
+
     layout
     {
         addafter("Default IC Partner G/L Acc. No")
